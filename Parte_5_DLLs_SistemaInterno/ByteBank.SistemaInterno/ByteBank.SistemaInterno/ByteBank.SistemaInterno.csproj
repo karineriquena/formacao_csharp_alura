@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C9C301E-5B56-4195-8662-30C84E970EC8}</ProjectGuid>
+    <ProjectGuid>{D4F00D35-06C3-4F8D-A0C7-B2EA538F552F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ByteBank.SistemaAgencia</RootNamespace>
-    <AssemblyName>ByteBank.SistemaAgencia</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>ByteBank.SistemaInterno</RootNamespace>
+    <AssemblyName>ByteBank.SistemaInterno</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Humanizer, Version=2.8.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
-      <HintPath>..\packages\Humanizer.Core.2.8.2\lib\netstandard2.0\Humanizer.dll</HintPath>
+    <Reference Include="ByteBank.Modelos">
+      <HintPath>..\..\..\Bibliotecas\ByteBank.Modelos.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,19 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Estagiario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ByteBank.Modelos\ByteBank.Modelos.csproj">
-      <Project>{C2175F0D-7024-465E-947F-C0FB51887A9C}</Project>
-      <Name>ByteBank.Modelos</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,65 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Olá mundo!");
+            Console.WriteLine(123);
+            Console.WriteLine(10.5);
+            Console.WriteLine(true);
+
+            object conta = new ContaCorrente(8475, 658749);
+            object dev = new Desenvolvedor("54445454841");
+            Console.WriteLine(conta); // funciona pq toda classe no .NET deriva do tipo object
+            Console.WriteLine(dev); // funciona pq toda classe no .NET deriva do tipo object
+
+            string contaToString = conta.ToString(); // ToString é um metodo virtual, portanto podemos sobrescrevê-lo
+            Console.WriteLine("Resultado: " + contaToString);
+
+
+            Cliente carlos_1 = new Cliente();
+            carlos_1.Nome = "Carlos";
+            carlos_1.CPF = "374.637.463-77";
+            carlos_1.Profissao = "Designer";            
+            
+            Cliente carlos_2 = new Cliente();
+            carlos_2.Nome = "Carlos";
+            carlos_2.CPF = "374.637.463-77";
+            carlos_2.Profissao = "Designer";
+
+            if (carlos_1 == carlos_2)
+            {
+                Console.WriteLine("Usando operador = São iguais!");
+            } 
+            else
+            {
+                Console.WriteLine("Usando operador = Não São iguais!");
+            }
+
+            if (carlos_1.Equals(carlos_2))
+            {
+                Console.WriteLine("Usando método EQUALS Sobrescrito São iguais!");
+            }
+            else
+            {
+                Console.WriteLine("Usando método EQUALS Sobrescrito Não São iguais!");
+            }
+
+            ContaCorrente conta_2 = new ContaCorrente(5879, 6598741);
+
+            if (carlos_1.Equals(conta_2))
+            {
+                Console.WriteLine("Não pode entrar aqui");
+            }
+            else
+            {
+                Console.WriteLine("Não é igual pois uma ContaCorrente não é igual a um Cliente");
+            }
+
+
+            Console.ReadLine();
+        }
+
+        static void TestaString()
+        {
             // Testando extração de números com expressão regular (Regex)
             // Suponha o texto abaixo:
 
@@ -32,21 +91,14 @@ namespace ByteBank.SistemaAgencia
             // string padrao = "[0-9]{4,5}-{0,1}[0-9]{4}"; // simplificando o de cima pois o grupo só tem 1 caractere no grupo "-"
             // string padrao = "[0-9]{4,5}-?[0-9]{4}"; // a '?' substitui o quantificador {0,1} "opcional"
 
-            string padrao = "[0-9]{4,5}-?[0-9]{4}";            
-            string textoDeTeste = "Meu nome é Guilherme, me ligue em 94784-4546"; 
+            // string padrao = "[0-9]{4,5}-?[0-9]{4}";            
+            // string textoDeTeste = "Meu nome é Guilherme, me ligue em 94784-4546"; 
 
-            Match resultado = Regex.Match(textoDeTeste, padrao);
-            Console.WriteLine(resultado.Value); // retorna o valor do texto que dá match com a regex
-            
+            // Match resultado = Regex.Match(textoDeTeste, padrao);
+            // Console.WriteLine(resultado.Value); // retorna o valor do texto que dá match com a regex
             // Console.WriteLine(Regex.IsMatch(textoDeTeste, padrao)); // IsMatch retorna um booleano
 
 
-            
-            
-            
-            
-            
-            
             /*string url = "pagina?moedaOrigem=real&moedaDestino=dolar";
             int indiceInterrogacao = url.IndexOf("?");
             string argumentos = url.Substring(indiceInterrogacao + 1); // inclusivo: a partir do indice 6, contendo o indice 6
@@ -124,8 +176,6 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine("Valor de moedaOrigem: " + valorMoedaOrigem);
             Console.WriteLine("Valor de moedaDestino: " + valorMoedaDestino);
             Console.WriteLine("Valor para converter (valor): " + valorConverter);*/
-
-            Console.ReadLine();
         }
     }
 }

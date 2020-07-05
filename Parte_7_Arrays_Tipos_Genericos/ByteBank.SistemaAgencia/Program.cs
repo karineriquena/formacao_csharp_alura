@@ -13,6 +13,7 @@ namespace ByteBank.SistemaAgencia
         static void Main(string[] args)
         {
             // TestaArrayInt();
+            TestaArrayComObjetos();
             Console.ReadLine();
         }
 
@@ -61,6 +62,24 @@ namespace ByteBank.SistemaAgencia
             int media = acumulador / idades.Length;
 
             Console.WriteLine("Média: " + media);
+        }
+
+        static void TestaArrayComObjetos()
+        {
+            // Quando já se sabe os itens do array, pode-se usar o açucar sintático abaixo (inicialização de arrays)
+            // (para não ter que ficar se preocupando com tamanho e acesso dos indices na ordem correta)
+            ContaCorrente[] contas = new ContaCorrente[]
+                {
+                    new ContaCorrente(874, 5679787),
+                    new ContaCorrente(874, 4456668),
+                    new ContaCorrente(874, 7781438)
+                }; // valor padrão para um tipo de referência é null
+
+            for (int indice = 0; indice < contas.Length; indice++)
+            {
+                ContaCorrente contaAtual = contas[indice];
+                Console.WriteLine($"Conta {indice} {contaAtual.Numero}");
+            }
         }
     }
 }

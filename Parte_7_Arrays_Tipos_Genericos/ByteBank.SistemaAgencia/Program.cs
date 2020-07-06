@@ -89,6 +89,10 @@ namespace ByteBank.SistemaAgencia
 
             // nomear o argumento para alterar somente o segundo argumento opcional
             lista.MeuMetodo(numero: 10);
+
+            ContaCorrente contaDoGui = new ContaCorrente(11111, 11111111);
+
+            lista.Adicionar(contaDoGui);
             
             lista.Adicionar(new ContaCorrente(874, 5679787));
             lista.Adicionar(new ContaCorrente(874, 4456668));
@@ -101,6 +105,11 @@ namespace ByteBank.SistemaAgencia
             lista.Adicionar(new ContaCorrente(874, 7781438));
             lista.Adicionar(new ContaCorrente(874, 7781438));
             lista.Adicionar(new ContaCorrente(874, 7781438));
+
+            lista.EscreverListaNaTela();
+            lista.Remover(contaDoGui);
+            Console.WriteLine("Após remover o item");
+            lista.EscreverListaNaTela();
         }
     }
 }

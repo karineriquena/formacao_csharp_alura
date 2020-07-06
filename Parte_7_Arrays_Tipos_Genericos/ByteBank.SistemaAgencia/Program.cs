@@ -85,7 +85,10 @@ namespace ByteBank.SistemaAgencia
 
         static void TestaListaDeContaCorrente()
         {
-            ListaDeContaCorrente lista = new ListaDeContaCorrente();
+            ListaDeContaCorrente lista = new ListaDeContaCorrente(10);
+
+            // nomear o argumento para alterar somente o segundo argumento opcional
+            lista.MeuMetodo(numero: 10);
             
             lista.Adicionar(new ContaCorrente(874, 5679787));
             lista.Adicionar(new ContaCorrente(874, 4456668));

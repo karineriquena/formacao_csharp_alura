@@ -14,7 +14,17 @@ namespace ByteBank.SistemaAgencia
         {
             // TestaArrayInt();
             // TestaArrayComObjetos();
-            TestaListaDeContaCorrente();
+            // TestaListaDeContaCorrente();
+
+            Console.WriteLine("Primeira chamada");
+            DesafioSomarPares(new int[] { 1, 2, 3, 4 });
+
+            Console.WriteLine("Segunda chamada");
+            DesafioSomarPares(new int[] { 1, 2, 3, 4, 5 });
+
+            Console.WriteLine("Terceira chamada");
+            DesafioSomarPares(new int[] { 1 });
+
             Console.ReadLine();
         }
 
@@ -110,6 +120,21 @@ namespace ByteBank.SistemaAgencia
             lista.Remover(contaDoGui);
             Console.WriteLine("Após remover o item");
             lista.EscreverListaNaTela();
+        }
+
+        // Soma os numeros de um array. Exemplo no array {1,2,3,4} a saida é 1+2 = 3, 3+4 = 7
+        // Se fosse o array {1,2,3,4,5} como o tamanho é impar a saida deve ser a mesma acima e o ultimo numero deve ser ignorado
+        static void DesafioSomarPares(int[] numeros)
+        {
+            for (int i = 0; i < numeros.Length -1; i+=2 )
+            {
+                int primeiroNumero = numeros[i];
+                int segundoNumero = numeros[i+1];
+
+                int soma = primeiroNumero + segundoNumero;
+
+                Console.WriteLine($"{primeiroNumero}+{segundoNumero} = {soma}");
+            }
         }
     }
 }

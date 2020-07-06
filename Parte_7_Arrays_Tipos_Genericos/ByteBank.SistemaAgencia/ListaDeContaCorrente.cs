@@ -50,11 +50,25 @@ namespace ByteBank.SistemaAgencia
 
             ContaCorrente[] novoArray = new ContaCorrente[novoTamanho];
 
-            for(int indice = 0; indice < _itens.Length; indice++)
+            // Copiando os itens do array _itens para o _novoArray
+            /*for(int indice = 0; indice < _itens.Length; indice++)
             {
                 novoArray[indice] = _itens[indice];
                 Console.WriteLine(".");
-            }
+            }*/
+
+            // Outra forma de copiar os itens seria usando essa função do .NET
+            Array.Copy(sourceArray: _itens, destinationArray: novoArray, length: _itens.Length);
+
+            // Outra sobrecarga do Copy, onde se copia a partir do array _itens, no indice 4, para o novoArray a partir do indice 2 copiando apenas 3 itens;
+            /*Array.Copy(
+                sourceArray: _itens,
+                sourceIndex: 4,
+
+                destinationArray: novoArray,
+                destinationIndex: 2,
+
+                length: 3);*/
 
             _itens = novoArray;
         }

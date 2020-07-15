@@ -12,6 +12,12 @@ namespace ByteBank.SistemaAgencia
         private ContaCorrente[] _itens;
         private int _proximaPosicao;
 
+        public int Tamanho { 
+            get { 
+                return _proximaPosicao; 
+            } 
+        }
+
         public ListaDeContaCorrente(int capacidadeInicial = 5) // argumento opcional
         {
             _itens = new ContaCorrente[capacidadeInicial];
@@ -26,9 +32,17 @@ namespace ByteBank.SistemaAgencia
         public void Adicionar(ContaCorrente item)
         {
             VerificarCapacidade(_proximaPosicao + 1);
-            Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
+            // Console.WriteLine($"Adicionando item na posição {_proximaPosicao}");
             _itens[_proximaPosicao] = item;
             _proximaPosicao++;
+        }
+
+        public void AdicionarVarios(params ContaCorrente[] itens)
+        {
+            foreach (ContaCorrente conta in itens)
+            {
+                Adicionar(conta);
+            }
         }
 
         public void Remover(ContaCorrente item)
@@ -65,6 +79,15 @@ namespace ByteBank.SistemaAgencia
             }
         }
 
+        public ContaCorrente GetItemNoIndice(int indice)
+        {
+            if (indice < 0 || indice >= _proximaPosicao)
+            {
+                throw new ArgumentOutOfRangeException(nameof(indice));
+            }
+            return _itens[indice];
+        }
+
         private void VerificarCapacidade(int tamanhoNecessario)
         {
             if (_itens.Length >= tamanhoNecessario)
@@ -80,7 +103,7 @@ namespace ByteBank.SistemaAgencia
                 novoTamanho = tamanhoNecessario;
             }
 
-            Console.WriteLine("Aumentando capacidade da lista!");
+            // Console.WriteLine("Aumentando capacidade da lista!");
 
             ContaCorrente[] novoArray = new ContaCorrente[novoTamanho];
 
@@ -105,6 +128,14 @@ namespace ByteBank.SistemaAgencia
                 length: 3);*/
 
             _itens = novoArray;
+        }
+
+        // Sintaxe para criar um indexador
+        public ContaCorrente this[int indice] {
+            get
+            {
+                return GetItemNoIndice(indice);
+            }
         }
     }
 }

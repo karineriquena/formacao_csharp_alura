@@ -14,16 +14,17 @@ namespace ByteBank.SistemaAgencia
         {
             // TestaArrayInt();
             // TestaArrayComObjetos();
-            // TestaListaDeContaCorrente();
+            TestaListaDeContaCorrente();
+            SomarVarios(5,20,65,87);
 
-            Console.WriteLine("Primeira chamada");
+            /*Console.WriteLine("Primeira chamada");
             DesafioSomarPares(new int[] { 1, 2, 3, 4 });
 
             Console.WriteLine("Segunda chamada");
             DesafioSomarPares(new int[] { 1, 2, 3, 4, 5 });
 
             Console.WriteLine("Terceira chamada");
-            DesafioSomarPares(new int[] { 1 });
+            DesafioSomarPares(new int[] { 1 });*/
 
             Console.ReadLine();
         }
@@ -102,8 +103,7 @@ namespace ByteBank.SistemaAgencia
 
             ContaCorrente contaDoGui = new ContaCorrente(11111, 11111111);
 
-            lista.Adicionar(contaDoGui);
-            
+            /*lista.Adicionar(contaDoGui);
             lista.Adicionar(new ContaCorrente(874, 5679787));
             lista.Adicionar(new ContaCorrente(874, 4456668));
             lista.Adicionar(new ContaCorrente(874, 7781438));
@@ -114,12 +114,44 @@ namespace ByteBank.SistemaAgencia
             lista.Adicionar(new ContaCorrente(874, 7781438));
             lista.Adicionar(new ContaCorrente(874, 7781438));
             lista.Adicionar(new ContaCorrente(874, 7781438));
-            lista.Adicionar(new ContaCorrente(874, 7781438));
+            lista.Adicionar(new ContaCorrente(874, 7781438));*/
 
-            lista.EscreverListaNaTela();
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                contaDoGui, 
+                new ContaCorrente(874, 5679787),
+                new ContaCorrente(874, 4456668)
+            };
+
+            // palavra reservada 'params' na assinatura do metodo permite tanto um array como passar item a item 
+            lista.AdicionarVarios(contas);
+            lista.AdicionarVarios(
+                contaDoGui, 
+                new ContaCorrente(874, 7781438), 
+                new ContaCorrente(874, 4456668)
+            );
+
+            for (int i = 0; i < lista.Tamanho; i++)
+            {
+                ContaCorrente itemAtual = lista[i];
+                Console.WriteLine($"Item na posição {i} = Conta {itemAtual.Numero}/{itemAtual.Agencia}");
+            }
+
+            /*lista.EscreverListaNaTela();
             lista.Remover(contaDoGui);
             Console.WriteLine("Após remover o item");
-            lista.EscreverListaNaTela();
+            lista.EscreverListaNaTela();*/
+        }
+
+        static int SomarVarios(params int[] numeros)
+        {
+            int acumulador = 0;
+            foreach(int numero in numeros)
+            {
+                acumulador += numero;
+            }
+            Console.WriteLine($"Soma Total: {acumulador}");
+            return acumulador;
         }
 
         // Soma os numeros de um array. Exemplo no array {1,2,3,4} a saida é 1+2 = 3, 3+4 = 7

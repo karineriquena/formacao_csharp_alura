@@ -14,8 +14,9 @@ namespace ByteBank.SistemaAgencia
         {
             // TestaArrayInt();
             // TestaArrayComObjetos();
-            TestaListaDeContaCorrente();
-            SomarVarios(5,20,65,87);
+            // TestaListaDeContaCorrente();
+            TestaListaDeObject();
+            // SomarVarios(5,20,65,87);
 
             /*Console.WriteLine("Primeira chamada");
             DesafioSomarPares(new int[] { 1, 2, 3, 4 });
@@ -166,6 +167,21 @@ namespace ByteBank.SistemaAgencia
                 int soma = primeiroNumero + segundoNumero;
 
                 Console.WriteLine($"{primeiroNumero}+{segundoNumero} = {soma}");
+            }
+        }
+
+        static void TestaListaDeObject()
+        {
+            ListaDeObject listaDeIdades = new ListaDeObject();
+            listaDeIdades.Adicionar(10);
+            listaDeIdades.Adicionar(5);
+            listaDeIdades.Adicionar(4);
+            listaDeIdades.AdicionarVarios(16, 23, 60);
+
+            for (int i = 0; i < listaDeIdades.Tamanho; i++)
+            {
+                int idade = (int)listaDeIdades[i];
+                Console.WriteLine($"Idade no índice {i}: {idade}");
             }
         }
     }

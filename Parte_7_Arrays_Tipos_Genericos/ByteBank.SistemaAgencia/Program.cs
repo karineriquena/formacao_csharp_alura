@@ -15,7 +15,8 @@ namespace ByteBank.SistemaAgencia
             // TestaArrayInt();
             // TestaArrayComObjetos();
             // TestaListaDeContaCorrente();
-            TestaListaDeObject();
+            // TestaListaDeObject();
+            TestaListaGenerica();
             // SomarVarios(5,20,65,87);
 
             /*Console.WriteLine("Primeira chamada");
@@ -183,6 +184,22 @@ namespace ByteBank.SistemaAgencia
                 int idade = (int)listaDeIdades[i];
                 Console.WriteLine($"Idade no índice {i}: {idade}");
             }
+        }
+        static void TestaListaGenerica()
+        {
+            Lista<int> idades = new Lista<int>();
+            idades.Adicionar(5);
+            idades.AdicionarVarios(1, 5, 78);
+
+            int somaIdades = 0;
+            for (int i = 0; i < idades.Tamanho; i++)
+            {
+                int idadeAtual = idades[i];
+                somaIdades += idadeAtual;
+                Console.WriteLine($"Idade no índice {i}: {idadeAtual}");
+            }
+            Console.WriteLine($"Soma das idades: {somaIdades}");
+            Console.WriteLine($"Média das idades: {somaIdades/idades.Tamanho}");
         }
     }
 }

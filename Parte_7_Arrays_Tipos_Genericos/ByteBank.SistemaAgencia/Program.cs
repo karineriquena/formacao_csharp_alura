@@ -16,7 +16,7 @@ namespace ByteBank.SistemaAgencia
             // TestaArrayComObjetos();
             // TestaListaDeContaCorrente();
             // TestaListaDeObject();
-            TestaListaGenerica();
+            // TestaListaGenerica();
             // SomarVarios(5,20,65,87);
 
             /*Console.WriteLine("Primeira chamada");
@@ -27,6 +27,8 @@ namespace ByteBank.SistemaAgencia
 
             Console.WriteLine("Terceira chamada");
             DesafioSomarPares(new int[] { 1 });*/
+
+            DesafioStaticClasse();
 
             Console.ReadLine();
         }
@@ -200,6 +202,16 @@ namespace ByteBank.SistemaAgencia
             }
             Console.WriteLine($"Soma das idades: {somaIdades}");
             Console.WriteLine($"Média das idades: {somaIdades/idades.Tamanho}");
+        }
+
+        static void DesafioStaticClasse()
+        {
+            StaticNaClasse<int>.ContadorEstatico++;
+            StaticNaClasse<int>.ContadorEstatico++;
+            StaticNaClasse<int>.ContadorEstatico++;
+
+            Console.WriteLine(StaticNaClasse<string>.ContadorEstatico);
+            Console.ReadLine();
         }
     }
 }

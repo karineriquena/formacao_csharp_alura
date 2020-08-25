@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
 using ByteBank.Modelos.Funcionarios;
+using ByteBank.SistemaAgencia.Extensoes;
 
 namespace ByteBank.SistemaAgencia
 {
@@ -26,7 +27,8 @@ namespace ByteBank.SistemaAgencia
 
             idades.Remove(5);
 
-            ListExtensoes.AdicionarVarios(idades, 1, 5687, 1987, 1567, 987);
+
+            // ListExtensoes.AdicionarVarios(idades, 1, 5687, 1987, 1567, 987);
             // metodo de extensão após colocar o this no parametro
             idades.AdicionarVarios(1, 5687, 1987, 1567, 987);
 

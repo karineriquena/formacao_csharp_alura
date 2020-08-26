@@ -17,25 +17,9 @@ namespace ByteBank.SistemaAgencia
             // ListComExtensionMethod();
             // UsoDoVar();
             // ListComSort();
-
-            var contas = new List<ContaCorrente>()
-            {
-                new ContaCorrente(341, 57480),
-                new ContaCorrente(342, 45678),
-                new ContaCorrente(340, 1),
-                new ContaCorrente(340, 99999),
-                new ContaCorrente(340, 48950),
-                new ContaCorrente(290, 18950),
-            };
-
-            // contas.Sort(); ~~> Chama a implementação dada em IComparable implementado pela classe ContaCorrente
-
-            contas.Sort(new ComparadorContaCorrentePorAgencia()); // ~~> Chama a implementação dada em IComparer, uma classe que implementa uma comparação para outro objeto qualquer
-
-            foreach (var conta in contas)
-            {
-                Console.WriteLine($"Conta número {conta.Numero}, ag. {conta.Agencia}");
-            }
+            // ListComIComparebleAndIComparer();
+            ListComOrderBy();
+            
 
             Console.ReadLine();
         }
@@ -123,6 +107,61 @@ namespace ByteBank.SistemaAgencia
             for (int i = 0; i < idades.Count; i++)
             {
                 Console.WriteLine(idades[i]);
+            }
+        }
+
+        static void ListComIComparebleAndIComparer()
+        {
+            var contas = new List<ContaCorrente>()
+            {
+                new ContaCorrente(341, 57480),
+                new ContaCorrente(342, 45678),
+                new ContaCorrente(340, 1),
+                new ContaCorrente(340, 99999),
+                new ContaCorrente(340, 48950),
+                new ContaCorrente(290, 18950),
+            };
+
+            // contas.Sort(); ~~> Chama a implementação dada em IComparable implementado pela classe ContaCorrente
+
+            contas.Sort(new ComparadorContaCorrentePorAgencia()); // ~~> Chama a implementação dada em IComparer, uma classe que implementa uma comparação para outro objeto qualquer
+
+            foreach (var conta in contas)
+            {
+                Console.WriteLine($"Conta número {conta.Numero}, ag. {conta.Agencia}");
+            }
+        }
+        static void ListComOrderBy()
+        {
+            var contas = new List<ContaCorrente>()
+            {
+                new ContaCorrente(341, 1),
+                new ContaCorrente(342, 999),
+                null,
+                new ContaCorrente(340, 4),
+                new ContaCorrente(340, 456),
+                new ContaCorrente(340, 10),
+                null,
+                null,
+                new ContaCorrente(290, 123),
+            };
+
+            IOrderedEnumerable<ContaCorrente> contasOrdenadas = 
+                contas.OrderBy(conta => { // ~~> Expressão Lambda
+                    if (conta == null)
+                    {
+                        // retornar o maior numero inteiro possivel pois queremos que fique no final a referencia nula
+                        return int.MaxValue;
+                    }
+                    return conta.Numero;  
+                }); 
+
+            foreach (var conta in contasOrdenadas)
+            {
+                if (conta != null)
+                {
+                    Console.WriteLine($"Conta número {conta.Numero}, ag. {conta.Agencia}");
+                } 
             }
         }
 

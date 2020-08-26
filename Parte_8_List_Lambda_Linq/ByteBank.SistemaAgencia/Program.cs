@@ -18,7 +18,8 @@ namespace ByteBank.SistemaAgencia
             // UsoDoVar();
             // ListComSort();
             // ListComIComparebleAndIComparer();
-            ListComOrderBy();
+            // ListComOrderBy();
+            ListComWhere();
             
 
             Console.ReadLine();
@@ -165,5 +166,46 @@ namespace ByteBank.SistemaAgencia
             }
         }
 
+        static void ListComWhere()
+        {
+            var contas = new List<ContaCorrente>()
+            {
+                new ContaCorrente(341, 1),
+                new ContaCorrente(342, 999),
+                null,
+                new ContaCorrente(340, 4),
+                new ContaCorrente(340, 456),
+                new ContaCorrente(340, 10),
+                null,
+                null,
+                new ContaCorrente(290, 123),
+            };
+
+            /*var listaSemNulos = new List<ContaCorrente>();
+            foreach (var conta in contas)
+            {
+                if (conta != null)
+                {
+                    listaSemNulos.Add(conta);
+                }
+            }
+
+            IEnumerable<ContaCorrente> contasNaoNulas = 
+                contas.Where(conta => conta != null);
+            
+            IOrderedEnumerable<ContaCorrente> contasOrdenadas =
+                listaSemNulos.OrderBy<ContaCorrente, int>(conta => conta.Numero);
+            */
+
+            var contasOrdenadas = contas
+                .Where(conta => conta != null) // ~~> Linq é o nome da tecnologia para usar as ordenações, where, com metodos de extensao e etc
+                .OrderBy(conta => conta.Numero);
+
+
+            foreach (var conta in contasOrdenadas)
+            {
+                Console.WriteLine($"Conta número {conta.Numero}, ag. {conta.Agencia}");
+            }
+        }
     }
 }

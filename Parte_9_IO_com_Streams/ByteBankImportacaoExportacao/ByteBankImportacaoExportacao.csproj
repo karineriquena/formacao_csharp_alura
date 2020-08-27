@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="1_LidandoComFileStreamDiretamente.cs" />
     <Compile Include="Enumeradores\Botao.cs" />
     <Compile Include="Enumeradores\Cores.cs" />
     <Compile Include="Enumeradores\CoresBotao.cs" />

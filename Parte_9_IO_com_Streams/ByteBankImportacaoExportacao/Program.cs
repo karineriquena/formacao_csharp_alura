@@ -13,31 +13,43 @@ namespace ByteBankImportacaoExportacao
     { 
         static void Main(string[] args) 
         {
-            //var enderecoDoArquivo = "contas.txt";
-            //var fluxoDoArquivo = new FileStream(enderecoDoArquivo, FileMode.Open);
+            //var textoComQuebraDeLinha = "minha primeira linha \n minha segunda linha";
+            //Console.WriteLine(textoComQuebraDeLinha);
+            //Console.ReadLine();
 
-            //// Buffer para gravar as informações temporárias
-            //var buffer = new byte[1024]; // 1kb
-            //var numeroDeBytesLidos = -1;
+            var enderecoDoArquivo = "contas.txt";
+            var fluxoDoArquivo = new FileStream(enderecoDoArquivo, FileMode.Open);
 
-            //while (numeroDeBytesLidos != 0)
-            //{
-            //    numeroDeBytesLidos = fluxoDoArquivo.Read(buffer, 0, 1024);
-            //    EscreverBuffer(buffer);
-            //}
+            // Buffer para gravar as informações temporárias
+            var buffer = new byte[1024]; // 1kb
+            var numeroDeBytesLidos = -1;
 
-            DesafioEnum();
+            while (numeroDeBytesLidos != 0)
+            {
+                numeroDeBytesLidos = fluxoDoArquivo.Read(buffer, 0, 1024); // ~~> atualizando o buffer
+                EscreverBuffer(buffer);
+            }
+
+            // cada caractere do unicode é um code point
+            // formato de transformação unicode
+            // Unicode Transformation Format = UTF
+            // UTF-8, UTF-16, UTF-32, UTF-7, UTF-1
 
             Console.ReadLine();
         }
 
         static void EscreverBuffer(byte[] buffer)
         {
-            foreach (var meuByte in buffer)
-            {
-                Console.Write(meuByte);
-                Console.Write(" ");
-            }
+            //var utf8 = Encoding.UTF8; // UTF8Encoding
+            var utf8 = Encoding.Default; // Encoding padrao do sistema operacional
+
+            var texto = utf8.GetString(buffer);
+            Console.Write(texto);
+            //foreach (var meuByte in buffer)
+            //{
+            //    Console.Write(meuByte);
+            //    Console.Write(" ");
+            //}
         }
 
         static void DesafioEnum()
